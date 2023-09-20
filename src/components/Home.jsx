@@ -5,17 +5,31 @@ import { useUserContext } from "../context/userContext";
 
 const imagesData = [
   { id: 'image1', src: 'sea.jpeg', tag: 'Nature' },
-  { id: 'image2', src: 'paris.jpeg', tag: 'City' },
-  { id: 'image3', src: 'lion.jpeg', tag: 'Animals' },
-  { id: 'image4', src: 'salah.jpeg', tag: 'Football' },
-  { id: 'image5', src: 'benz.jpeg', tag: 'Cars' },
-  { id: 'image6', src: 'computer.jpeg', tag: 'Tech' },
-  { id: 'image7', src: 'fight.jpeg', tag: 'History' },
-  { id: 'image8', src: 'pizza.jpeg', tag: 'Food' },
-  { id: 'image9', src: 'giraffe.jpg', tag: 'Animals' },
-  { id: 'image10', src: 'panda.jpeg', tag: 'Animals' },
-  { id: 'image11', src: 'squrriel.jpeg', tag: 'Animals' },
-  { id: 'image12', src: 'cheetah.jpeg', tag: 'Animals' },
+  { id: 'image2', src: 'code.png', tag: 'Tech' },
+  { id: 'image3', src: 'girona.jpeg', tag: 'Football' },
+  { id: 'image4', src: 'tokyo.jpeg', tag: 'City' },
+  { id: 'image5', src: 'squrriel.jpeg', tag: 'Animals' },
+  { id: 'image6', src: 'red.jpeg', tag: 'Cars' },
+  { id: 'image7', src: 'paris.jpeg', tag: 'City' },
+  { id: 'image8', src: 'lion.jpeg', tag: 'Animals' },
+  { id: 'image9', src: 'salah.jpeg', tag: 'Football' },
+  { id: 'image10', src: 'trees.jpeg', tag: 'Nature' },
+  { id: 'image11', src: 'benz.jpeg', tag: 'Cars' },
+  { id: 'image12', src: 'squrriel.jpeg', tag: 'Animals' },
+  { id: 'image13', src: 'computer.jpeg', tag: 'Tech' },
+  { id: 'image14', src: 'fight.jpeg', tag: 'History' },
+  { id: 'image15', src: 'jeep.jpeg', tag: 'Cars' },
+  { id: 'image16', src: 'pitch.jpeg', tag: 'Football' },
+  { id: 'image17', src: 'pizza.jpeg', tag: 'Food' },
+  { id: 'image18', src: 'mountain.jpeg', tag: 'Nature' },
+  { id: 'image19', src: 'giraffe.jpg', tag: 'Animals' },
+  { id: 'image20', src: 'ai.jpeg', tag: 'Tech' },
+  { id: 'image21', src: 'panda.jpeg', tag: 'Animals' },
+  { id: 'image22', src: 'chev.jpeg', tag: 'Cars' },
+  { id: 'image23', src: 'lights.jpeg', tag: 'Nature' },
+  { id: 'image24', src: 'cheetah.jpeg', tag: 'Animals' },
+  { id: 'image25', src: 'messi.jpeg', tag: 'Football' },
+  { id: 'image26', src: 'moscow.jpeg', tag: 'City' },
 ];
 
 const Home = () => {
@@ -57,16 +71,16 @@ const Home = () => {
     <div className="py-3 px-2">
     <nav className="flex flex-col sm:flex-row justify-between items-center px-4">
       <div className="flex items-center justify-between">
-        <h1 className="flex py-3 text-green-600 font-bold text-xl">DnD Gallery</h1>
+        <h1 className="flex py-3 text-green-600 font-bold xx:ml-[-16px] sm:ml-[2px] text-xl">DnD Gallery</h1>
         <button
-          className="text-green-600 ml-36 text-2xl sm:hidden"
+          className="text-green-600 ml-44 text-2xl sm:hidden"
           onClick={toggleMobileNav}
         >
           ☰
         </button>
       </div>
 
-      {isMobileNavOpen ? ( // Conditionally render mobile navigation
+      {isMobileNavOpen ? ( 
         <div className="sm:hidden flex flex-col items-start">
           <input
             type="text"
@@ -101,14 +115,14 @@ const Home = () => {
       )}
     </nav>
 
-    <div className="grid sm:grid-cols-3 xx:grid-cols-2 gap-4 p-4 cursor-move">
+    <div className="grid sm:grid-cols-3 xx:grid-cols-2 xx:gap-2 sm:gap-4 sm:p-4 xx:py-2 cursor-move">
       {filteredImages.map((image) => (
         <Draggable key={image.id}>
-          <div className="relative sm:w-full sm:h-[320px] xx:w-[150px]">
+          <div className="relative sm:w-full sm:h-[320px] xx:w-[170px] xx:hover:opacity-100">
             <img
               src={image.src}
               alt={image.tag}
-              className="w-full h-[320px] rounded-lg"
+              className="w-full h-[320px] xx:hover:opacity-10 rounded-lg"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold opacity-0 hover:opacity-100 transition-opacity">
               {image.tag}
