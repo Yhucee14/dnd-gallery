@@ -20,26 +20,15 @@ const App = () => {
   const { loading, user } = useUserContext();
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen">
-    <RingLoader
-      css={override}
-      size={150} 
-      color={'green'} 
-      loading={true} 
-    />
-  </div>
-  }
-
-  if (user) {
     return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home user={user}/>} />
-          <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </Router>
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader
+          css={override}
+          size={150}
+          color={'green'}
+          loading={true}
+        />
+      </div>
     );
   }
 
@@ -47,12 +36,12 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Auth />} />
+        <Route path="/home" element={user ? <Home /> : <Auth />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Home user={user}/>} />
       </Routes>
     </Router>
-  )
+  );
 }
 
 export default App
