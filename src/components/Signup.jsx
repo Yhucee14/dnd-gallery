@@ -27,7 +27,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="form">
+    <div className="form sm:px-36 pt-28 xx:px-12">
       <form onSubmit={onSubmit} className="form flex flex-col py-2 bg-gray-500">
         <h1 className="flex justify-center text-[35px] text-bold text-white"> New User </h1>
         <div className="flex flex-col py-1 xx:w-[87%] xx:ml-[6%] sm:w-[70%] sm:ml-[14%]">

@@ -41,9 +41,9 @@ const Signin = () => {
   };
 
   return (
-    <div className="flex flex-col py-2">
-      <form onSubmit={onSubmit} className="form flex flex-col py-2 bg-gray-500">
-        <h1 className="flex justify-center text-[35px] text-bold text-white"> Login </h1>
+    <div className="flex flex-col py-2 sm:px-36 pt-28 xx:px-12">
+      <form onSubmit={onSubmit} className="form flex flex-col py-2 bg-gray-500 rounded-xl">
+        <h1 className="flex justify-center text-[35px] text-bold font-bold underline text-white"> Login </h1>
         {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
         <div className="flex flex-col py-1 xx:w-[87%] xx:ml-[6%] sm:w-[70%] sm:ml-[14%]">
           <label className="py-3 text-bold text-white">Enter Your Email</label>

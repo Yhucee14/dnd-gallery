@@ -71,10 +71,10 @@ const Home = () => {
 
 
 
-      <div className="grid grid-cols-3 gap-4 p-4 cursor-move ">
+      <div className="grid sm:grid-cols-3 xx:grid-cols-2 gap-4 p-4 cursor-move ">
         {filteredImages.map((image) => (
           <Draggable key={image.id} >
-            <div className="relative h-[320px] ">
+            <div className="relative sm:w-full sm:h-[320px] xx:w-[150px]  ">
               <img
                 src={image.src}
                 alt={image.tag}

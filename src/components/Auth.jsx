@@ -25,10 +25,10 @@ const Auth = () => {
   }, [navigate, user]);
 
   return (
-    <div className="container">
+    <div className="bg-black h-screen">
       {!index ? <Signin /> : <Signup />}
       <p onClick={toggleIndex} className="flex justify-center text-black pt-2">
-        {!index ? "New User?, Click here" : "Already have an account?, Click here to login."}
+        {/* {!index ? "New User?, Click here" : "Already have an account?, Click here to login."} */}
       </p>
     </div>
   );
