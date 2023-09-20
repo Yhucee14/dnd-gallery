@@ -1,8 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
 
+const firebaseKey = import.meta.env.VITE_FIREBASE_KEY;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCPGSEYLoVsqg7yimkMyosG80UisnLITO0",
+  apiKey: firebaseKey,
   authDomain: "dnd-gallery-9bae7.firebaseapp.com",
   projectId: "dnd-gallery-9bae7",
   storageBucket: "dnd-gallery-9bae7.appspot.com",
