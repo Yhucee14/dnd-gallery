@@ -73,11 +73,11 @@ const Home = () => {
             placeholder="Search images"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-[90%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
+            className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
           />
           <button
             onClick={handleLogout}
-            className="bg-green-600 mt-2 text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
+            className="bg-green-600 mt-2 ml-40 text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
           >
             Logout
           </button>
@@ -89,7 +89,7 @@ const Home = () => {
             placeholder="Search images"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-[60%] h-[40px] px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
+            className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
           />
           <button
             onClick={handleLogout}
