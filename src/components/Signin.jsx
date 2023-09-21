@@ -56,6 +56,16 @@ const Signin = () => {
         <div className="py-3 flex justify-center mt-3">
           <button type="submit" className="black_btn font-bold w-full">Sign In</button>
         </div>
+
+        <div className='text-white py-1 flex flex-col justify-center'>
+          <h1 className=' flex justify-center py-2'>
+            Default Login details are:
+          </h1>
+
+          <h1 className=' flex justify-center py-1'>Email: <b className='px-2'> user@example.com</b></h1>
+          <h1 className=' flex justify-center'>Password: <b className='px-2'> 1Password</b></h1>
+        </div>
+
         <button onClick={forgotPasswordHandler} className="pt-3"> <p className="text-white">Forgot Password?, click here</p></button>
        
        <Link to='/signup' className='flex justify-center py-3'>

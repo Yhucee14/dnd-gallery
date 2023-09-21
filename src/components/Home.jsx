@@ -84,7 +84,7 @@ const Home = () => {
         <div className="sm:hidden flex flex-col items-start">
           <input
             type="text"
-            placeholder="Search images"
+            placeholder="Search, eg Cars, Animals"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
@@ -100,7 +100,7 @@ const Home = () => {
         <div className="hidden sm:flex space-x-2">
           <input
             type="text"
-            placeholder="Search images"
+            placeholder="Search, eg Cars, Animals"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
