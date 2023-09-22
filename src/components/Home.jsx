@@ -75,6 +75,10 @@ const Home = () => {
     setImages(reorderedImages);
   };
 
+  const filteredImages = images.filter((image) =>
+  image.tag.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
   return (
     <div className="py-3 px-2">
       <nav className="flex flex-col sm:flex-row justify-between items-center px-4">
@@ -133,7 +137,7 @@ const Home = () => {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              {images.map((image, index) => (
+              {filteredImages.map((image, index) => (
                 <Draggable key={image.id} draggableId={image.id} index={index}>
                   {(provided) => (
                     <div
