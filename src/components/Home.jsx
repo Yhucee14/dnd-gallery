@@ -130,10 +130,10 @@ const Home = () => {
       </nav>
 
       <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="image-grid" direction="horizontal">
+        <Droppable droppableId="image-grid">
           {(provided) => (
             <div
-              className="grid sm:grid-cols-3 xx:grid-cols-2 xx:gap-2 sm:gap-4 sm:p-4 xx:py-2"
+              className="grid sm:grid-cols-3 xx:grid-cols-2 xx:gap-2 sm:gap-4 sm:p-4 xx:px-5 transition-opacity duration-500" // Increase the duration here
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
@@ -141,7 +141,7 @@ const Home = () => {
                 <Draggable key={image.id} draggableId={image.id} index={index}>
                   {(provided) => (
                     <div
-                      className="relative sm:w-full sm:max-h-[500px] xx:w-[170px] xx:hover:opacity-100"
+                      className="relative sm:w-full sm:max-h-[500px] xx:w-[170px] xx:hover:opacity-100 transition-opacity duration-500" // Increase the duration here
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
@@ -149,7 +149,7 @@ const Home = () => {
                       <img
                         src={image.src}
                         alt={image.tag}
-                        className="w-full h-[320px] xx:hover:opacity-10 rounded-lg"
+                        className="w-full h-[320px] xx:hover:opacity-10 rounded-lg transition-opacity duration-500" // Increase the duration here
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold opacity-0 hover:opacity-100 transition-opacity">
                         {image.tag}
