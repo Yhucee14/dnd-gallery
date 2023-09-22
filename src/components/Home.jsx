@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Draggable from "react-draggable";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/userContext";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 
 const imagesData = [
   { id: 'image1', src: 'sea.jpeg', tag: 'Nature' },
@@ -33,24 +34,19 @@ const imagesData = [
 ];
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  const { logoutUser, user } = useUserContext(); // Access the logoutUser function from context
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { logoutUser, user } = useUserContext();
   const [loading, setLoading] = useState(true);
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false); // Track mobile navigation state
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
-  // Filter images based on the search query
-  const filteredImages = imagesData.filter((image) =>
-    image.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Define a state for images
+  const [images, setImages] = useState(imagesData);
 
   useEffect(() => {
     if (!user) {
-      // User is not authenticated, redirect to the login page
       navigate("/signin");
     } else {
-      // User is authenticated, set loading to false
       setLoading(false);
     }
   }, [user, navigate]);
@@ -67,73 +63,104 @@ const Home = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
+  const handleDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const reorderedImages = [...images];
+    const [movedImage] = reorderedImages.splice(result.source.index, 1);
+    reorderedImages.splice(result.destination.index, 0, movedImage);
+
+    setImages(reorderedImages);
+  };
+
   return (
     <div className="py-3 px-2">
-    <nav className="flex flex-col sm:flex-row justify-between items-center px-4">
-      <div className="flex items-center justify-between">
-        <h1 className="flex py-3 text-green-600 font-bold xx:ml-[-16px] sm:ml-[2px] text-xl">DnD Gallery</h1>
-        <button
-          className="text-green-600 ml-44 text-2xl sm:hidden"
-          onClick={toggleMobileNav}
-        >
-          ☰
-        </button>
-      </div>
-
-      {isMobileNavOpen ? ( 
-        <div className="sm:hidden flex flex-col items-start">
-          <input
-            type="text"
-            placeholder="Search, eg Cars, Animals"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
-          />
+      <nav className="flex flex-col sm:flex-row justify-between items-center px-4">
+        <div className="flex items-center justify-between">
+          <h1 className="flex py-3 text-green-600 font-bold xx:ml-[-16px] sm:ml-[2px] text-xl">
+            DnD Gallery
+          </h1>
           <button
-            onClick={handleLogout}
-            className="bg-green-600 mt-2 ml-40 text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
+            className="text-green-600 ml-44 text-2xl sm:hidden"
+            onClick={toggleMobileNav}
           >
-            Logout
+            ☰
           </button>
         </div>
-      ) : (
-        <div className="hidden sm:flex space-x-2">
-          <input
-            type="text"
-            placeholder="Search, eg Cars, Animals"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
-          />
-          <button
-            onClick={handleLogout}
-            className="bg-green-600 mt-2 text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
-          >
-            Logout
-          </button>
-        </div>
-      )}
-    </nav>
 
-    <div className="grid sm:grid-cols-3 xx:grid-cols-2 xx:gap-2 sm:gap-4 sm:p-4 xx:py-2 cursor-move">
-      {filteredImages.map((image) => (
-        <Draggable key={image.id}>
-          <div className="relative sm:w-full sm:h-[320px] xx:w-[170px] xx:hover:opacity-100">
-            <img
-              src={image.src}
-              alt={image.tag}
-              className="w-full h-[320px] xx:hover:opacity-10 rounded-lg"
+        {isMobileNavOpen ? (
+          <div className="sm:hidden flex flex-col items-start">
+            <input
+              type="text"
+              placeholder="Search, eg Cars, Animals"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold opacity-0 hover:opacity-100 transition-opacity">
-              {image.tag}
-            </div>
+            <button
+              onClick={handleLogout}
+              className="bg-green-600 mt-2 ml-40 text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
+            >
+              Logout
+            </button>
           </div>
-        </Draggable>
-      ))}
-    </div>
-  </div>
-);
-};
+        ) : (
+          <div className="hidden sm:flex space-x-2">
+            <input
+              type="text"
+              placeholder="Search, eg Cars, Animals"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-[100%] h-[40px] mt-2 px-2 py-1 rounded-lg bg-transparent border text-black focus:outline-none focus:bg-transparent focus:ring-1 focus:ring-green-600 placeholder-black"
+            />
+            <button
+              onClick={handleLogout}
+              className="bg-green-600 mt-2 text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
+            >
+              Logout
+            </button>
+          </div>
+        )}
+      </nav>
 
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId="image-grid" direction="horizontal">
+          {(provided) => (
+            <div
+              className="grid sm:grid-cols-3 xx:grid-cols-2 xx:gap-2 sm:gap-4 sm:p-4 xx:py-2"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {images.map((image, index) => (
+                <Draggable key={image.id} draggableId={image.id} index={index}>
+                  {(provided) => (
+                    <div
+                      className="relative sm:w-full sm:max-h-[500px] xx:w-[170px] xx:hover:opacity-100"
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.tag}
+                        className="w-full h-[320px] xx:hover:opacity-10 rounded-lg"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold opacity-0 hover:opacity-100 transition-opacity">
+                        {image.tag}
+                      </div>
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder} {/* Add the placeholder here */}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
+  );
+};
 
 export default Home;
