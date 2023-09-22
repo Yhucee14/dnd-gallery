@@ -133,7 +133,7 @@ const Home = () => {
         <Droppable droppableId="image-grid">
           {(provided) => (
             <div
-              className="grid sm:grid-cols-3 xx:grid-cols-2 xx:gap-2 sm:gap-4 sm:p-4 xx:px-5 transition-opacity duration-500" // Increase the duration here
+              className="grid sm:grid-cols-3 xx:grid-cols-2 xx:gap-2 sm:gap-4 sm:p-4 xx:px-5 transition-opacity duration-500" 
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
@@ -141,7 +141,7 @@ const Home = () => {
                 <Draggable key={image.id} draggableId={image.id} index={index}>
                   {(provided) => (
                     <div
-                      className="relative sm:w-full sm:max-h-[500px] xx:w-[170px] xx:hover:opacity-100 transition-opacity duration-500" // Increase the duration here
+                      className="relative sm:w-full sm:max-h-[500px] xx:w-[170px] xx:hover:opacity-100 transition-opacity duration-500" 
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
@@ -149,7 +149,7 @@ const Home = () => {
                       <img
                         src={image.src}
                         alt={image.tag}
-                        className="w-full h-[320px] xx:hover:opacity-10 rounded-lg transition-opacity duration-500" // Increase the duration here
+                        className="w-full h-[320px] xx:hover:opacity-10 rounded-lg transition-opacity duration-500" 
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold opacity-0 hover:opacity-100 transition-opacity">
                         {image.tag}
@@ -158,7 +158,7 @@ const Home = () => {
                   )}
                 </Draggable>
               ))}
-              {provided.placeholder} {/* Add the placeholder here */}
+              {provided.placeholder} 
             </div>
           )}
         </Droppable>

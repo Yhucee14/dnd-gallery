@@ -20,7 +20,7 @@ const Signin = () => {
         navigate('/home');
       } catch (error) {
         // Handle sign-in error and set the error state
-        setError('Invalid email or password'); // You can customize this error message
+        setError('Invalid email or password'); 
         console.error('Sign-in error:', error);
       }
     }
@@ -34,7 +34,6 @@ const Signin = () => {
           emailRef.current.value = '';
         })
         .catch((error) => {
-          // Handle forgot password error, if needed
           console.error('Forgot password error:', error);
         });
     }
