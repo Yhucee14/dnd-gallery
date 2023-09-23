@@ -141,7 +141,7 @@ const Home = () => {
                 <Draggable key={image.id} draggableId={image.id} index={index}>
                   {(provided) => (
                     <div
-                      className="relative sm:w-full sm:max-h-[500px] xx:w-[170px] xx:hover:opacity-100 transition-opacity duration-500" 
+                      className="relative sm:w-full sm:max-h-[500px]  xx:hover:opacity-100 transition-opacity duration-500" 
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
