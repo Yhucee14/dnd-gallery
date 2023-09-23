@@ -111,7 +111,7 @@ const Home = () => {
             </button>
           </div>
         ) : (
-          <div className="hidden sm:flex space-x-2">
+          <div className="hidden sm:flex space-x-2 ">
             <input
               type="text"
               placeholder="Search, eg Cars, Animals"
@@ -121,7 +121,7 @@ const Home = () => {
             />
             <button
               onClick={handleLogout}
-              className="bg-green-600 mt-2 text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
+              className="bg-green-600 mt-2  text-white font-bold hover:border-2 hover:border-black px-3 h-[42px] py-1 rounded-xl"
             >
               Logout
             </button>
@@ -141,7 +141,7 @@ const Home = () => {
                 <Draggable key={image.id} draggableId={image.id} index={index}>
                   {(provided) => (
                     <div
-                      className="relative sm:w-full sm:max-h-[500px]  xx:hover:opacity-100 transition-opacity duration-500" 
+                      className="relative sm:w-full sm:max-h-[500px]  xx:hover:opacity-100 mt-3 transition-opacity duration-500" 
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
